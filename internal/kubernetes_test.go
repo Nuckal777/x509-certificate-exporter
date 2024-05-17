@@ -364,6 +364,7 @@ func TestKubeEmptyStringKey(t *testing.T) {
 		},
 	}, func(m []model.MetricFamily) {
 		metrics := getMetricsForName(m, "x509_read_errors")
+		assert.Len(t, metrics, 1)
 		assert.Equal(t, 1., metrics[0].GetGauge().GetValue())
 	})
 }
